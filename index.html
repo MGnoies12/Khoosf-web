@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خوسف | نگین کویر خراسان</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+        <h2>خوسف؛ دیار گل‌های نرگس...</h2>
+    </div>
+
+    <header>
+        <nav class="glass-nav">
+            <div class="logo">خوسف</div>
+            <div class="hamburger" id="hamburger-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#intro">معرفی</a></li>
+                <li><a href="#history">تاریخ</a></li>
+                <li><a href="#tourism">گردشگری</a></li>
+                <li><a href="#products">محصولات</a></li>
+                <li><a href="#customs">آداب</a></li>
+                <li><a href="#mines">معادن</a></li>
+                <li><a href="#about">درباره ما</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero" id="home">
+            <div class="overlay"></div>
+            <img src="img/headerbg.jpg" class="hero-bg-img" alt="نمای خوسف">
+            
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+                <h1>شهرستان خوسف</h1>
+                <p class="literary-text">
+                    "در آغوش کویر، آنجا که خورشید بر خاک زرین بوسه می‌زند، خوسف همچون نگینی می‌درخشد. دیاری که عطر گل‌های نرگسش روح را نوازش می‌دهد."
+                </p>
+                <a href="#intro" class="btn-glow">کشف سرزمین طلایی</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="intro" class="container section-padding">
+        <div class="intro-grid">
+            <div class="intro-text glass-card" data-aos="fade-left">
+                <h2>معرفی نگین کویر</h2>
+                <p>
+                    شهرستان خوسف در استان خراسان جنوبی واقع شده و به دلیل بافت تاریخی و ارزشمند خود شناخته می‌شود. این شهر در حاشیه کویر لوت قرار دارد. خوسف به شهر گل‌های نرگس شهرت دارد و بافت قدیمی آن یکی از زنده‌ترین بافت‌های تاریخی ایران است که همچنان نفس می‌کشد.
+                </p>
+            </div>
+            <div class="intro-img" data-aos="fade-right">
+                <img src="img/intro.jpg" alt="معرفی خوسف">
+            </div>
+        </div>
+    </section>
+
+    <section id="history" class="container section-padding">
+        <div class="section-header" data-aos="zoom-in">
+            <h2>اماکن تاریخی</h2>
+            <div class="line"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="flip-up">
+                <img src="img/ebnehesam.jpg" alt="آرامگاه ابن حسام">
+                <div class="overlay-info">
+                    <h3>آرامگاه ابن حسام خوسفی</h3>
+                    <p>مقبره شاعر برجسته قرن نهم هجری با معماری کلاه فرنگی خاص.</p>
+                </div>
+                <div class="click-hint"><i class="fas fa-fingerprint"></i> لمس کنید</div>
+            </div>
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="flip-up" data-aos-delay="100">
+                <img src="img/ghalekhoor.jpg" alt="قلعه خور">
+                <div class="overlay-info">
+                    <h3>قلعه خور</h3>
+                    <p>دژی مستحکم از خشت و گل که راوی جنگ‌های قدیم است.</p>
+                </div>
+                <div class="click-hint"><i class="fas fa-fingerprint"></i> لمس کنید</div>
+            </div>
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="flip-up" data-aos-delay="200">
+                <img src="img/baft.jpg" alt="بافت تاریخی">
+                <div class="overlay-info">
+                    <h3>بافت تاریخی شهر</h3>
+                    <p>کوچه باغ‌های کاهگلی که قدم زدن در آن سفر به تاریخ است.</p>
+                </div>
+                <div class="click-hint"><i class="fas fa-fingerprint"></i> لمس کنید</div>
+            </div>
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="flip-up" data-aos-delay="300">
+                <img src="img/house.jpg" alt="خانه نخعی">
+                <div class="overlay-info">
+                    <h3>خانه نخعی</h3>
+                    <p>شاهکار معماری مسکونی کویر و موزه مردم‌شناسی.</p>
+                </div>
+                <div class="click-hint"><i class="fas fa-fingerprint"></i> لمس کنید</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tourism" class="dark-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="zoom-in">
+                <h2>اماکن گردشگری</h2>
+                <div class="line gold"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="item-card" onclick="toggleDetails(this)" data-aos="fade-up"><img src="img/masjed.jpg"><div class="overlay-info"><h3>مسجد جامع خوسف</h3><p>محل عبادت و هنر معماری اسلامی.</p></div></div>
+              
+                <div class="item-card" onclick="toggleDetails(this)" data-aos="fade-up" data-aos-delay="200"><img src="img/ark.jpg"><div class="overlay-info"><h3>روستای آرک</h3><p>طبیعت بکر در دل کوهپایه.</p></div></div>
+                <div class="item-card" onclick="toggleDetails(this)" data-aos="fade-up" data-aos-delay="300"><img src="img/narges.jpg"><div class="overlay-info"><h3>نرگس‌زارها</h3><p>دشت‌های معطر و طلایی در فصل سرما.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="container section-padding">
+        <div class="section-header" data-aos="zoom-in"><h2>محصولات محلی</h2><div class="line"></div></div>
+        <div class="gallery-grid">
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="zoom-in-up"><img src="img/gol.jpg"><div class="overlay-info"><h3>گل نرگس</h3><p>نماد و عطر خوش خوسف.</p></div></div>
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="zoom-in-up"><img src="img/asal.jpg"><div class="overlay-info"><h3>عسل کویری</h3><p>عسلی خالص و شفابخش.</p></div></div>
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="zoom-in-up"><img src="img/drug.jpg"><div class="overlay-info"><h3>گیاهان دارویی</h3><p>گنجینه سلامت کویر.</p></div></div>
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="zoom-in-up"><img src="img/male.jpg"><div class="overlay-info"><h3>مله بافی</h3><p>پارچه‌ای ارزشمند از پنبه قهوه‌ای.</p></div></div>
+            <div class="item-card" onclick="toggleDetails(this)" data-aos="zoom-in-up"><img src="img/sang.jpg"><div class="overlay-info"><h3>سنگ‌های قیمتی</h3><p>عقیق‌های رنگارنگ خور.</p></div></div>
+        </div>
+    </section>
+
+    <section id="customs" class="dark-section section-padding">
+        <div class="section-header" data-aos="zoom-in"><h2>آداب و رسوم</h2><div class="line gold"></div></div>
+        <div class="gallery-grid">
+             <div class="item-card" onclick="toggleDetails(this)" data-aos="fade-right"><img src="img/nakhl.jpg"><div class="overlay-info"><h3>نخل گردانی</h3><p>آیین باشکوه عزاداری محرم.</p></div></div>
+             <div class="item-card" onclick="toggleDetails(this)" data-aos="fade-up"><img src="img/bil.jpg"><div class="overlay-info"><h3>بیل برداری</h3><p>نماد غیرت و کشاورزی در عاشورا.</p></div></div>
+             <div class="item-card" onclick="toggleDetails(this)" data-aos="fade-left"><img src="img/jashn.jpg"><div class="overlay-info"><h3>جشن نرگس</h3><p>شکرگزاری برداشت گل.</p></div></div>
+        </div>
+    </section>
+
+    <section id="mines" class="container section-padding">
+        <div class="section-header" data-aos="zoom-in"><h2>معادن طلایی</h2><div class="line"></div></div>
+        <div class="gallery-grid">
+            <div class="item-card gold-border" onclick="toggleDetails(this)" data-aos="flip-left"><img src="img/shadan.jpg"><div class="overlay-info"><h3>طلای شادان</h3><p>بزرگترین معدن طلای شرق.</p></div></div>
+            <div class="item-card gold-border" onclick="toggleDetails(this)" data-aos="flip-right"><img src="img/hirad.jpg"><div class="overlay-info"><h3>طلای هیرد</h3><p>قلب تپنده صنعت خوسف.</p></div></div>
+            <div class="item-card gold-border" onclick="toggleDetails(this)" data-aos="flip-up"><img src="img/mes.jpg"><div class="overlay-info"><h3>مس قلعه زری</h3><p>معدنی با شهرت جهانی.</p></div></div>
+        </div>
+    </section>
+
+    <footer id="about">
+        <div class="footer-content glass-card" data-aos="fade-up">
+            <h2>تیم رَسا</h2>
+            <p>ما اعضای تیم رَسا این سایت رو جهت ارائه برای رویداد ملّی تولید محتوای دیجیتال بسیج شهرستان خوسف با افتخار طراحی کردیم.</p>
+            <p class="copy">©  آبان ۱۴۰۴ طراحی شده با عشق برای خوسف</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
