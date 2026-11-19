@@ -1,3 +1,22 @@
+// A small, non-blocking status remains usable on slow or failed image loads.
+function showLoadingStatus() {
+  const loader = document.querySelector("#page-loader");
+  const heroImage = document.querySelector(".dunes");
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  loader.hidden = false;
+  const ready = Promise.allSettled([
+    typeof heroImage.decode === "function"
+      ? heroImage.decode()
+      : Promise.resolve(),
+    document.fonts?.ready,
+  ]);
+  Promise.race([Promise.all([ready, wait(850)]), wait(2600)]).then(() => {
+    loader.classList.add("is-leaving");
+    setTimeout(() => loader.remove(), 280);
+  });
+}
+showLoadingStatus();
+
 const nav = document.querySelector("nav");
 const menu = document.querySelector("#menu");
 const links = document.querySelector(".nav-links");
@@ -92,5 +111,8 @@ if (
   );
   document
     .querySelectorAll(".section-header,.item-card,.intro-copy,figure")
-    .forEach((el) => observer.observe(el));
+    .forEach((el) => {
+      el.classList.add("reveal-target");
+      observer.observe(el);
+    });
 }

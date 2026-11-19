@@ -273,9 +273,6 @@ footer h2 {
   margin-top: 16px;
   color: #cfbd9f;
 }
-.reveal {
-  animation: appear 0.75s both;
-}
 @keyframes appear {
   from {
     opacity: 0;
@@ -727,5 +724,116 @@ h1 {
   }
   .dunes {
     height: 51%;
+  }
+}
+
+/* A quiet sunrise while the first landscape and its type are getting ready. */
+.page-loader:not([hidden]) {
+  position: fixed;
+  z-index: 12;
+  inset-inline: 0;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  width: max-content;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 18px;
+  border: 1px solid #d2d5ca;
+  border-radius: 40px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 3px 18px #242e2514;
+  font-size: 15px;
+  pointer-events: none;
+  transition:
+    opacity 260ms ease-out,
+    transform 260ms ease-out;
+}
+.page-loader svg {
+  width: 30px;
+  height: 28px;
+  color: #738368;
+}
+.page-loader.is-leaving {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --settle: cubic-bezier(0.22, 0.72, 0.25, 1);
+  }
+  .loading-sun {
+    animation: sunrise 1.25s ease-in-out infinite alternate;
+  }
+  @keyframes sunrise {
+    from {
+      transform: translateY(5px);
+      opacity: 0.4;
+    }
+    to {
+      transform: translateY(-2px);
+      opacity: 1;
+    }
+  }
+  .dunes {
+    animation: dunes-settle 3.8s var(--settle) both;
+    transform-origin: center bottom;
+  }
+  @keyframes dunes-settle {
+    from {
+      opacity: 0.35;
+      transform: scale(1.045);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .hero-copy > * {
+    animation: appear 0.85s var(--settle) backwards;
+  }
+  .hero-copy h1 {
+    animation-delay: 100ms;
+  }
+  .hero-copy p {
+    animation-delay: 190ms;
+  }
+  .hero-copy .cta {
+    animation-delay: 280ms;
+  }
+  .nav-links.open,
+  .active .overlay-info p {
+    animation: appear 0.32s var(--settle);
+  }
+  .cta .icon {
+    transition: transform 0.3s var(--settle);
+  }
+  .cta:is(:hover, :focus-visible) .icon {
+    transform: translateX(-4px);
+  }
+  .reveal-target {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  .reveal-target.reveal {
+    opacity: 1;
+    translate: none;
+    transition:
+      opacity 0.75s var(--settle),
+      translate 0.75s var(--settle);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .item-card:nth-child(3n + 2) {
+    --reveal-delay: 70ms;
+  }
+  .item-card:nth-child(3n) {
+    --reveal-delay: 140ms;
+  }
+  .reveal-target:focus-within {
+    opacity: 1;
+    translate: none;
+    transition: none;
   }
 }
