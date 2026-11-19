@@ -77,6 +77,48 @@ try {
         "px",
     );
   }
+  assert.equal(
+    await page
+      .locator(".dunes")
+      .evaluate((el) => getComputedStyle(el).animationName),
+    "none",
+  );
+
+  // Leave the hero image pending: the loader must not trap navigation or wait forever.
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  let releaseImage;
+  const imageGate = new Promise((resolve) => {
+    releaseImage = resolve;
+  });
+  await page.route("**/img/quiet-dunes.jpg", async (route) => {
+    await imageGate;
+    await route.continue();
+  });
+  await page.goto(process.env.SITE_URL || "http://localhost:8000/", {
+    waitUntil: "domcontentloaded",
+  });
+  await page.locator("#page-loader").waitFor({ state: "visible" });
+  assert.equal(
+    await page
+      .locator(".dunes")
+      .evaluate((el) => getComputedStyle(el).animationName),
+    "dunes-settle",
+  );
+  await page.locator("#menu").click();
+  assert.equal(
+    await page.locator("#menu").getAttribute("aria-expanded"),
+    "true",
+  );
+  await page.keyboard.press("Escape");
+  await page
+    .locator("#page-loader")
+    .waitFor({ state: "detached", timeout: 5000 });
+  releaseImage();
+  await page.locator("#history .item-card").first().scrollIntoViewIfNeeded();
+  await page.waitForSelector("#history .item-card.reveal");
+  console.log(
+    "Passed motion preferences, scroll reveals and loader slow-image fallback",
+  );
   assert.deepEqual(errors, []);
 } finally {
   await browser.close();
