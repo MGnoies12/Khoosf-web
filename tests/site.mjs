@@ -60,16 +60,9 @@ try {
       );
     }
     await page.locator(".to-top").click();
-    await page.locator(".prev").click();
-    assert.equal(await page.locator("#count span").textContent(), "۰۳");
-    await page.locator(".next").click();
-    assert.equal(await page.locator("#count span").textContent(), "۰۱");
-    await page.locator(".frame").nth(1).click();
-    assert.equal(
-      await page.locator(".photos img.show").getAttribute("src"),
-      "img/baft.jpg",
-    );
-    assert.equal(await page.locator('.frame[aria-pressed="true"]').count(), 1);
+    assert.equal(await page.locator("header img").count(), 1);
+    await page.locator(".cta").click();
+    assert.equal(new URL(page.url()).hash, "#intro");
     await page.evaluate(() =>
       Promise.all(
         [...document.images].map((img) => {
@@ -79,7 +72,7 @@ try {
       ),
     );
     console.log(
-      "Passed layout, navigation, disclosures, images and carousel at " +
+      "Passed layout, navigation, disclosures, images and hero navigation at " +
         width +
         "px",
     );
