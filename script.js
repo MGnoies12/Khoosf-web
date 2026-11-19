@@ -8,7 +8,7 @@ function setMenu(open) {
 menu.addEventListener("click", () =>
   setMenu(menu.getAttribute("aria-expanded") !== "true"),
 );
-links.addEventListener("click", (event) => {
+nav.addEventListener("click", (event) => {
   if (event.target.closest("a")) setMenu(false);
 });
 document.addEventListener("click", (e) => {
@@ -33,7 +33,7 @@ const destinations = [...links.querySelectorAll("a")].map((link) => ({
 let queued = false;
 function updateLocation() {
   queued = false;
-  nav.classList.toggle("scrolled", scrollY > 16);
+
   const atEnd =
     Math.ceil(scrollY + innerHeight) >= document.documentElement.scrollHeight;
   const current = atEnd
@@ -44,6 +44,11 @@ function updateLocation() {
             section.getBoundingClientRect().top <= nav.offsetHeight + 28,
         )
         .at(-1) || destinations[0];
+  for (const link of nav.querySelectorAll(".shortcuts a")) {
+    if (link.hash === current.link.hash)
+      link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  }
   for (const entry of destinations) {
     if (entry === current) entry.link.setAttribute("aria-current", "location");
     else entry.link.removeAttribute("aria-current");
@@ -59,29 +64,6 @@ window.addEventListener("scroll", scheduleUpdate, { passive: true });
 window.addEventListener("resize", scheduleUpdate);
 window.addEventListener("pageshow", scheduleUpdate);
 updateLocation();
-const pictures = [...document.querySelectorAll(".photos img")];
-const frames = [...document.querySelectorAll(".frame")];
-const counter = document.querySelector("#count span");
-const number = new Intl.NumberFormat("fa-IR", { minimumIntegerDigits: 2 });
-let slide = 0;
-function selectSlide(index) {
-  slide = (index + pictures.length) % pictures.length;
-  pictures.forEach((image, i) => {
-    image.classList.toggle("show", i === slide);
-    image.setAttribute("aria-hidden", String(i !== slide));
-    frames[i].setAttribute("aria-pressed", String(i === slide));
-  });
-  counter.textContent = number.format(slide + 1);
-}
-frames.forEach((frame, i) =>
-  frame.addEventListener("click", () => selectSlide(i)),
-);
-document
-  .querySelector(".next")
-  .addEventListener("click", () => selectSlide(slide + 1));
-document
-  .querySelector(".prev")
-  .addEventListener("click", () => selectSlide(slide - 1));
 const triggers = document.querySelectorAll(".card-trigger");
 function expand(trigger, open) {
   trigger.setAttribute("aria-expanded", String(open));

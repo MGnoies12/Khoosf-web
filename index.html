@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="theme-color" content="#3b3026" />
+    <meta name="theme-color" content="#faf9f5" />
     <link rel="icon" type="image/svg+xml" href="img/compass.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>خوسف | نگین کویر خراسان</title>
@@ -32,62 +32,35 @@
     <a class="skip" href="#intro">رفتن به معرفی</a>
     <nav aria-label="فهرست اصلی">
       <div class="nav-wrap">
-        <a class="brand" href="#home"
-          ><svg class="star" viewBox="0 0 64 64" aria-hidden="true">
-            <g fill="none" stroke="currentColor">
-              <circle cx="32" cy="32" r="20" />
-              <circle cx="32" cy="32" r="23" stroke-dasharray="1 4" />
-              <path transform="rotate(0 32 32)" d="M32 2l4 24-4 6-4-6Z" />
-              <path
-                fill="currentColor"
-                transform="rotate(0 32 32)"
-                d="M32 2V32l-4-6Z"
-              />
-              <path transform="rotate(45 32 32)" d="M32 13l4 13-4 6-4-6Z" />
-              <path
-                fill="currentColor"
-                transform="rotate(45 32 32)"
-                d="M32 13V32l-4-6Z"
-              />
-              <path transform="rotate(90 32 32)" d="M32 2l4 24-4 6-4-6Z" />
-              <path
-                fill="currentColor"
-                transform="rotate(90 32 32)"
-                d="M32 2V32l-4-6Z"
-              />
-              <path transform="rotate(135 32 32)" d="M32 13l4 13-4 6-4-6Z" />
-              <path
-                fill="currentColor"
-                transform="rotate(135 32 32)"
-                d="M32 13V32l-4-6Z"
-              />
-              <path transform="rotate(180 32 32)" d="M32 2l4 24-4 6-4-6Z" />
-              <path
-                fill="currentColor"
-                transform="rotate(180 32 32)"
-                d="M32 2V32l-4-6Z"
-              />
-              <path transform="rotate(225 32 32)" d="M32 13l4 13-4 6-4-6Z" />
-              <path
-                fill="currentColor"
-                transform="rotate(225 32 32)"
-                d="M32 13V32l-4-6Z"
-              />
-              <path transform="rotate(270 32 32)" d="M32 2l4 24-4 6-4-6Z" />
-              <path
-                fill="currentColor"
-                transform="rotate(270 32 32)"
-                d="M32 2V32l-4-6Z"
-              />
-              <path transform="rotate(315 32 32)" d="M32 13l4 13-4 6-4-6Z" />
-              <path
-                fill="currentColor"
-                transform="rotate(315 32 32)"
-                d="M32 13V32l-4-6Z"
-              />
-            </g></svg
-          ><span>خوسف<small>KHOOSF</small></span></a
+        <a class="brand" href="#home" aria-label="خوسف، خانه">
+          <svg
+            class="dune-mark"
+            viewBox="0 0 40 40"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.4"
+          >
+            <circle cx="20" cy="20" r="18" />
+            <circle cx="17" cy="13" r="3" />
+            <path d="M4 25q7-11 16-4t16-1M7 29q7-8 15-3t11-1" />
+          </svg>
+          خوسف
+        </a>
+        <div class="shortcuts">
+          <a href="#home" aria-current="location">خانه</a
+          ><a href="#intro">معرفی</a><a href="#tourism">گردشگری</a
+          ><a href="#about">درباره ما</a>
+        </div>
+        <button
+          id="menu"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-links"
         >
+          <svg class="icon" aria-hidden="true"><use href="#menu-icon" /></svg>
+          فهرست
+        </button>
         <ul class="nav-links" id="nav-links">
           <li><a href="#home" aria-current="location">خانه</a></li>
           <li><a href="#intro">معرفی</a></li>
@@ -98,85 +71,29 @@
           <li><a href="#mines">معادن</a></li>
           <li><a href="#about">درباره ما</a></li>
         </ul>
-        <span class="loc"
-          ><svg class="icon" aria-hidden="true"><use href="#pin" /></svg> خراسان
-          جنوبی، ایران</span
-        ><button
-          id="menu"
-          aria-label="فهرست"
-          aria-expanded="false"
-          aria-controls="nav-links"
-        >
-          <svg class="icon" aria-hidden="true"><use href="#menu-icon" /></svg>
-        </button>
       </div>
     </nav>
-    <header id="home">
-      <div class="photos">
-        <img class="show" src="img/desert-cover.jpg" alt="چشم‌انداز کویر" /><img
-          aria-hidden="true"
-          src="img/baft.jpg"
-          alt="بافت تاریخی شهر"
-        /><img aria-hidden="true" src="img/narges.jpg" alt="نرگس‌زارها" />
-      </div>
-      <div class="hero-shade"></div>
-      <div class="contours"></div>
-
-      <div class="hero wrap">
-        <div class="hero-copy">
-          <div class="eyebrow"><i></i> نگین کویر خراسان</div>
-          <h1><span>شهرستان</span> <em>خوسف</em></h1>
-          <p>
-            در آغوش کویر، آنجا که خورشید بر خاک زرین بوسه می‌زند، خوسف همچون
-            نگینی می‌درخشد. دیاری که عطر گل‌های نرگسش روح را نوازش می‌دهد.
-          </p>
-          <a class="cta" href="#intro"
-            >کشف سرزمین طلایی
-            <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg
-          ></a>
+    <header id="home" class="quiet-hero">
+      <img
+        class="dunes"
+        src="img/quiet-dunes.jpg"
+        alt="چشم‌انداز تپه‌های شنی کویر"
+        fetchpriority="high"
+      />
+      <div class="hero-copy">
+        <div class="place">
+          <svg class="icon" aria-hidden="true"><use href="#pin" /></svg> خراسان
+          جنوبی، ایران
         </div>
-      </div>
-      <div class="hero-foot wrap">
-        <div class="controls">
-          <button class="round prev" aria-label="تصویر قبلی">
-            <svg class="icon" aria-hidden="true">
-              <use href="#chev" />
-            </svg></button
-          ><button class="round next" aria-label="تصویر بعدی">
-            <svg class="icon" aria-hidden="true">
-              <use href="#chev" />
-            </svg></button
-          ><span id="count" aria-live="polite" aria-atomic="true" dir="ltr"
-            ><span>۰۱</span> <b>/ ۰۳</b></span
-          >
-        </div>
-        <div class="filmstrip" role="group" aria-label="انتخاب تصویر">
-          <button
-            type="button"
-            class="frame"
-            aria-label="چشم‌انداز کویر"
-            aria-pressed="true"
-          >
-            <img src="img/desert-cover.jpg" alt="" /></button
-          ><button
-            type="button"
-            class="frame"
-            aria-label="بافت تاریخی شهر"
-            aria-pressed="false"
-          >
-            <img src="img/baft.jpg" alt="" /></button
-          ><button
-            type="button"
-            class="frame"
-            aria-label="نرگس‌زارها"
-            aria-pressed="false"
-          >
-            <img src="img/narges.jpg" alt="" />
-          </button>
-        </div>
-        <span class="coord" dir="ltr"
-          ><span>✧</span> 32°46′ N &nbsp; 58°53′ E</span
-        >
+        <h1>شهرستان خوسف</h1>
+        <p>
+          در آغوش کویر، آنجا که خورشید بر خاک زرین بوسه می‌زند، خوسف همچون نگینی
+          می‌درخشد. دیاری که عطر گل‌های نرگسش روح را نوازش می‌دهد.
+        </p>
+        <a class="cta" href="#intro"
+          >کشف سرزمین طلایی
+          <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg
+        ></a>
       </div>
     </header>
     <main>
