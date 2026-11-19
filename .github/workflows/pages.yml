@@ -1,0 +1,43 @@
+name: Publish Khoosf to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare static website
+        run: |
+          node --check script.js
+          mkdir -p _site/fonts _site/img
+          cp index.html style.css script.js _site/
+          cp fonts/*.woff2 _site/fonts/
+          cp img/*.jpg img/*.svg _site/img/
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.publish.outputs.page_url }}
+    steps:
+      - name: Deploy site
+        id: publish
+        uses: actions/deploy-pages@v5
