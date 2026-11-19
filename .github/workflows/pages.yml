@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Prepare static website
         run: |
           node --check script.js
@@ -24,6 +24,14 @@ jobs:
           cp index.html style.css script.js _site/
           cp fonts/*.woff2 _site/fonts/
           cp img/*.jpg img/*.svg _site/img/
+      - name: Test packaged site in Chrome
+        run: |
+          npm ci --ignore-scripts
+          python3 -m http.server 8765 --bind 127.0.0.1 &
+          server=$!
+          trap 'kill "$server"' EXIT
+          curl --retry 5 --retry-connrefused --fail -s -o /dev/null http://127.0.0.1:8765/_site/
+          SITE_URL=http://127.0.0.1:8765/_site/ npm test
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site

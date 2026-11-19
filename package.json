@@ -1,0 +1,6 @@
+{
+  "name": "khoosf-web",
+  "private": true,
+  "scripts": { "test": "node tests/site.mjs" },
+  "devDependencies": { "playwright-core": "1.65.1" }
+}
